@@ -2,7 +2,7 @@ Repo for "Neural Architecture Search for Compressed Sensing Magnetic Resonance I
 
 Update: 2021.06.12:
 
-Sorry for the delay but I am still not authorized to make codes public due to the orresponding auther and our team member's extensive work (under review) based on this project. Here I recommend to follow (my thanks to) https://github.com/facebookresearch/fastMRI and https://github.com/quark0/darts to re-implement my results based on which I built this project. Feel free to email the cor-responding author if any problems.
+Sorry for the delay but I am still not authorized to make codes public due to the corresponding auther and our team members' extensive work (under review) based on this project. Here I recommend to follow (my thanks to) https://github.com/facebookresearch/fastMRI and https://github.com/quark0/darts to re-implement my results based on which I built this project. Feel free to email the cor-responding author if any problems.
 
 Thanks a lot for your attention. The inference model and weights will be released after our extensive work.
 
