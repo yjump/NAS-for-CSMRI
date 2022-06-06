@@ -1,6 +1,6 @@
 """ CNN for architecture search """
 import sys
-sys.path.append('/home/shuo/yanjp/tsi_mri')
+sys.path.append('../../NAS-for-CSMRI')
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -49,12 +49,12 @@ class SearchCNN(nn.Module):
         self.cells = nn.ModuleList()
         reduction_p = False
         for i in range(n_layers):
-            # Reduce featuremap size and double channels in 1/3 and 2/3 layer.
-            if i in [n_layers//3, 2*n_layers//3]:
-                C_cur *= 1
-                reduction = True
-            else:
-                reduction = False
+            # There is no need to reduce feature maps for MRI reconstruction
+            #if i in [n_layers//3, 2*n_layers//3]:
+            #    C_cur *= 1
+            #    reduction = True
+            #else:
+            #    reduction = False
 
             cell = SearchCell(n_nodes, C_pp, C_p, C_cur, reduction_p, reduction)
             reduction_p = reduction

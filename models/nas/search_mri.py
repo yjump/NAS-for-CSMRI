@@ -219,13 +219,13 @@ def main():
         utils.save_checkpoint(model, config.path, is_best)
         print("")
 
-    logger.info("Final best Prec@1 = {:.4%}".format(best_top1))
+    logger.info("Final best PSNR = {:.4%}".format(best_top1))
     logger.info("Best Genotype = {}".format(best_genotype))
 
 
 def train(train_loader, valid_loader, model, architect, w_optim, alpha_optim, lr, epoch):
-    top1 = utils.AverageMeter()
-    top5 = utils.AverageMeter()
+    psnr = utils.AverageMeter()
+    ssim = utils.AverageMeter()
     losses = utils.AverageMeter()
 
     cur_step = epoch*len(train_loader)
@@ -252,20 +252,20 @@ def train(train_loader, valid_loader, model, architect, w_optim, alpha_optim, lr
         nn.utils.clip_grad_norm_(model.weights(), config.w_grad_clip)
         w_optim.step()
 
-        prec1, prec5 = utils.accuracy(logits, trn_y, topk=(1, 5))
+        prec1, prec5 = utils.get_PSNR_SSIM(logits, trn_y, topk=(1, 5))
         losses.update(loss.item(), N)
-        top1.update(prec1.item(), N)
-        top5.update(prec5.item(), N)
+        psnr.update(prec1.item(), N)
+        ssim.update(prec5.item(), N)
 
         if step % config.print_freq == 0 or step == len(train_loader)-1:
             logger.info(
                 "Train: [{:2d}/{}] Step {:03d}/{:03d} Loss {losses.avg:.3f} "
                 "PSNR/SSIM ({top1.avg:.1%}, {top5.avg:.1%})".format(
                     epoch+1, config.epochs, step, len(train_loader)-1, losses=losses,
-                    top1=top1, top5=top5))
+                    top1=psnr, top5=ssim))
 
         writer.add_scalar('train/loss', loss.item(), cur_step)
-        writer.add_scalar('train/PSNR', prec1.item(), cur_step)
+        writer.add_scalar('train/PSNR', prec1=.item(), cur_step)
         writer.add_scalar('train/SSIM', prec5.item(), cur_step)
         cur_step += 1
 
@@ -273,8 +273,8 @@ def train(train_loader, valid_loader, model, architect, w_optim, alpha_optim, lr
 
 
 def validate(valid_loader, model, epoch, cur_step):
-    top1 = utils.AverageMeter()
-    top5 = utils.AverageMeter()
+    psnr = utils.AverageMeter()
+    ssim = utils.AverageMeter()
     losses = utils.AverageMeter()
 
     model.eval()
@@ -287,25 +287,25 @@ def validate(valid_loader, model, epoch, cur_step):
             logits = model(X)
             loss = model.criterion(logits, y)
 
-            prec1, prec5 = utils.accuracy(logits, y, topk=(1, 5))
+            prec1, prec5 = utils.get_PSNR_SSIM(logits, y, topk=(1, 5))
             losses.update(loss.item(), N)
-            top1.update(prec1.item(), N)
-            top5.update(prec5.item(), N)
+            psnr.update(prec1.item(), N)
+            ssim.update(prec5.item(), N)
 
             if step % config.print_freq == 0 or step == len(valid_loader)-1:
                 logger.info(
                     "Valid: [{:2d}/{}] Step {:03d}/{:03d} Loss {losses.avg:.3f} "
                     "PSNR/SSIM ({top1.avg:.1%}, {top5.avg:.1%})".format(
                         epoch+1, config.epochs, step, len(valid_loader)-1, losses=losses,
-                        top1=top1, top5=top5))
+                        top1=psnr, top5=ssim))
 
     writer.add_scalar('val/loss', losses.avg, cur_step)
-    writer.add_scalar('val/top1', top1.avg, cur_step)
-    writer.add_scalar('val/top5', top5.avg, cur_step)
+    writer.add_scalar('val/psnr', psnr.avg, cur_step)
+    writer.add_scalar('val/ssim', ssim.avg, cur_step)
 
-    logger.info("Valid: [{:2d}/{}] Final Prec@1 {:.4%}".format(epoch+1, config.epochs, top1.avg))
+    logger.info("Valid: [{:2d}/{}] Final PSNR {:.4%}".format(epoch+1, config.epochs, psnr.avg))
 
-    return top1.avg
+    return psnr.avg
 
 
 if __name__ == "__main__":

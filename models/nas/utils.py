@@ -108,7 +108,7 @@ class AverageMeter():
     #
     # return res
 
-def accuracy(output, target, topk=(1,)):
+def get_PSNR_SSIM(output, target, topk=(1,)):
     # """ Computes the precision@k for the specified values of k """
 
     output = output.to('cpu').squeeze(0).detach().numpy()

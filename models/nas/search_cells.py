@@ -1,6 +1,6 @@
 """ CNN cell for architecture search """
 import sys
-sys.path.append('/home/shuo/yanjp/tsi_mri')
+sys.path.append('../../NAS-for-CSMRI')
 import torch
 import torch.nn as nn
 from models.nas import ops

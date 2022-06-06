@@ -1,6 +1,6 @@
 """ Network architecture visualizer using graphviz """
 import sys
-sys.path.append('/home/shuo/yanjp/tsi_mri')
+sys.path.append('../../NAS-for-CSMRI')
 import sys
 from graphviz import Digraph
 import models.nas.genotypes as gt

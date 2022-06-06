@@ -5,7 +5,7 @@ The original project was built on https://github.com/facebookresearch/fastMRI an
 The current code base was based on pytorch version is pytorch=0.4.1=py36_cuda8.0.61_cudnn7.1.2_1 with torchvision=0.2.1=py36_0 without maintenance to adapt new pytorch version.
 
 To run:
-python3 ./NAS-for-CSMRI/models/nas/search_mri.py for searching the architecture of cells.
+python3 ./NAS-for-CSMRI/models/nas/search_mri.py --name 'setting_1' for searching the architecture of cells.
 
 This project is for research purpose and not approved for clinical use.
 

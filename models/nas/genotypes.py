@@ -4,7 +4,7 @@
     - dag: real ops (can be mixed or discrete, but Genotype has only discrete information itself)
 """
 import sys
-sys.path.append('/home/shuo/yanjp/tsi_mri')
+sys.path.append('../../NAS-for-CSMRI')
 from collections import namedtuple
 import torch
 import torch.nn as nn
@@ -14,13 +14,10 @@ from models.nas import ops
 Genotype = namedtuple('Genotype', 'normal normal_concat reduce reduce_concat')
 
 PRIMITIVES = [
-    'max_pool_3x3',
-    'avg_pool_3x3',
     'skip_connect', # identity
     'sep_conv_3x3',
-    'sep_conv_5x5',
-    'dil_conv_3x3',
-    'dil_conv_5x5',
+    'dil_2_conv_3x3',
+    'dil_3_conv_3x3',
     'none'
 ]
 
