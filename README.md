@@ -1,25 +1,21 @@
 Repo for "Neural Architecture Search for Compressed Sensing Magnetic Resonance Image Reconstruction".  
 
-Update: 2021.06.12:
+The original project was built on https://github.com/facebookresearch/fastMRI and https://github.com/quark0/darts . 
 
-Sorry for the delay but I am still not authorized to make codes public due to the corresponding auther and our team members' extensive work (under review) based on this project. Here I recommend to follow (my thanks to) https://github.com/facebookresearch/fastMRI and https://github.com/quark0/darts to re-implement my results based on which I built this project. Feel free to email the cor-responding author if any problems.
+The current code base was based on pytorch version is pytorch=0.4.1=py36_cuda8.0.61_cudnn7.1.2_1 with torchvision=0.2.1=py36_0 without maintenance to adapt new pytorch version.
 
-Thanks a lot for your attentions. The inference model and weights will be released after our extensive work.
+This project is for research purpose and not approved for clinical use.
 
-
-Our previous article is published in Computerized Medical Imaging And Graphics, or refer to arxiv version:  
-
- [Yan, J., Chen, S., Zhang, Y., & Li, X. (2020). Neural Architecture Search for Compressed Sensing Magnetic Resonance Image Reconstruction. arXiv preprint arXiv:2002.09625.](https://arxiv.org/abs/2002.09625)  
+Our previous article is published in Computerized Medical Imaging And Graphics, or refer to researchgate revised version(https://www.researchgate.net/publication/339471747_Neural_Architecture_Search_for_Compressed_Sensing_Magnetic_Resonance_Image_Reconstruction).  
 
 Please cite:  
 
-@article{yan2020neural,  
-
-  title={Neural Architecture Search for Compressed Sensing Magnetic Resonance Image Reconstruction},  
-  
-  author={Yan, Jiangpeng and Chen, Shuo and Zhang, Yongbing and Li, Xiu},  
-  
-  journal={Computerized Medical Imaging And Graphics},  
-  
-  year={2020}  
-}  
+@article{yan2020neural,
+  title={Neural Architecture Search for compressed sensing Magnetic Resonance image reconstruction},
+  author={Yan, Jiangpeng and Chen, Shou and Zhang, Yongbing and Li, Xiu},
+  journal={Computerized Medical Imaging and Graphics},
+  volume={85},
+  pages={101784},
+  year={2020},
+  publisher={Elsevier}
+}
