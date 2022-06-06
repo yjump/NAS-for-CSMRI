@@ -1,6 +1,6 @@
 """ Utilities """
 import sys
-sys.path.append('/home/shuo/yanjp/tsi_mri')
+sys.path.append('../../NAS-for-CSMRI')
 import os
 import logging
 import shutil

@@ -4,6 +4,9 @@ The original project was built on https://github.com/facebookresearch/fastMRI an
 
 The current code base was based on pytorch version is pytorch=0.4.1=py36_cuda8.0.61_cudnn7.1.2_1 with torchvision=0.2.1=py36_0 without maintenance to adapt new pytorch version.
 
+To run:
+python3 ./NAS-for-CSMRI/models/nas/search_mri.py for searching the architecture of cells.
+
 This project is for research purpose and not approved for clinical use.
 
 Our previous article is published in Computerized Medical Imaging And Graphics, or refer to researchgate revised version(https://www.researchgate.net/publication/339471747_Neural_Architecture_Search_for_Compressed_Sensing_Magnetic_Resonance_Image_Reconstruction).  
