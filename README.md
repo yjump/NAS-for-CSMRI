@@ -14,11 +14,19 @@ Our previous article is published in Computerized Medical Imaging And Graphics, 
 Please cite:  
 
 @article{yan2020neural,
+
   title={Neural Architecture Search for compressed sensing Magnetic Resonance image reconstruction},
+  
   author={Yan, Jiangpeng and Chen, Shou and Zhang, Yongbing and Li, Xiu},
+  
   journal={Computerized Medical Imaging and Graphics},
+  
   volume={85},
+  
   pages={101784},
+  
   year={2020},
+  
   publisher={Elsevier}
+  
 }
