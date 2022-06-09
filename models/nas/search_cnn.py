@@ -51,10 +51,10 @@ class SearchCNN(nn.Module):
         for i in range(n_layers):
             # There is no need to reduce feature maps for MRI reconstruction
             #if i in [n_layers//3, 2*n_layers//3]:
-            #    C_cur *= 1
+            #    C_cur *= 2
             #    reduction = True
             #else:
-            #    reduction = False
+            reduction = False
 
             cell = SearchCell(n_nodes, C_pp, C_p, C_cur, reduction_p, reduction)
             reduction_p = reduction
